@@ -76,9 +76,9 @@ class Movie extends Component {
                 <img className="logoImg float-right" src={require("../img/cinema.png")}/>
 
                 {
-                    this.state.movieInfo === null ?
+                    this.state.movieId === null ?
                         <div><img className="defImg" src={require("../img/curtain.png")}/></div>
-                        : (this.state.movieInfo === undefined ?
+                        : (this.state.movieId === 1 ?
                             <div>This movie does not exist or maybe you misspeled it</div>
                             :
                             <div className="row">
