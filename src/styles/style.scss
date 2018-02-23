@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+$mainRed: #AF2B28;
+$lightRed: #B8908D;
+
+@mixin random-color($property) {
+  #{$property}: unquote("rgba(#{random(256) - 1}, #{random(256)-1}, #{random(256 - 1)}, #{random(100)/100})");
+}
+
+@mixin repeat($contnetFiller, $n){
+  $content:"";
+  @for $i from 1 through $n {
+    $content: $content + $contnetFiller;
+ }
+   content: $content;
+}
+
+body {
+    background-color: black;
+    padding-bottom: 70px;
+    color: white;
+    font-family: 'Lato', sans-serif;
+}
+
+input {
+    width: 40%;
+    margin-bottom: 40px;
+    outline-color: $mainRed;
+}
+
+img {
+    margin-bottom: 20px;
+}
+
+h3 {
+    text-align: left;
+    color: $mainRed;
+    font-weight: 600;
+}
+
+.logoImg {
+    width: 200px;
+    height: auto;
+    margin-top: -170px;
+}
+
+.poster {
+    box-shadow: 0 10px 21px -4px #323232;
+}
+
+.defImg {
+    width: 100%;
+}
+
+.stars-outer {
+  display: inline-block;
+  position: relative;
+  font-family: FontAwesome;
+  font-size: 19px;
+  color: $lightRed;
+}
+ 
+.stars-outer::before {
+  @include repeat("\f006", 10)
+}
+ 
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+ 
+.stars-inner::before {
+  @include repeat("\f005", 10) 
+  color: #f8ce0b;
+}
+
+.btn {
+    vertical-align: top;
+    background-color: $mainRed;
+    border-radius: 0;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+    &:focus {
+        box-shadow: none;
+    }
+    &:active {
+        box-shadow: 0px 1px 8px black inset;
+    }
+}
+
+.author {
+    color: $lightRed;
+    font-size: 17px;
+    font-weight: 700;
+    font-style: italic;
+}
+
+textarea {
+    width: 100%;
+    border-color:$lightRed;
+    
+    &:focus {
+        outline-color: $lightRed;
+    }
+}
+
+iframe {
+    margin-bottom: 30px;
+}
+
+.imgPlaceholder {
+    width: 92px;
+    height: 138px;
+    @include random-color('background-color');
+    display: inline-block;
+}
+
+.postButton {
+    border: 2px solid $mainRed;
+    background-color: white;
+    color: #AF2B28;
+    font-weight: 700;
+    width: 110px;
+    height:45px;
+     &:hover {
+        background-color: $mainRed;
+        color: white;
+        cursor: pointer;
+    }
+    &:focus {
+        outline-color: $lightRed;
+    }
+}
+
+.similar {
+    background-color: #3F0000;
+    padding-top: 50px;
+    
+    a {
+        color: #c9ccb9;
+        text-decoration: none;
+        font-weight: 600;
+    }
+}
+
+#main {
+    margin-top: 40px;
+}
+
+#movieInfo {
+    text-align: center;
+    background-color: papayawhip;
+    padding: 50px;
+    color: black;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    //border-right:50px dashed black;
+    
+    p {
+       text-align: left; 
+    }
+}
