@@ -34,7 +34,6 @@ class Movie extends Component {
             }
 
             if (!mainMovieId) {
-                // No preference, use first (idx=0) as mainMovie
                 this.setState({
                     movieId: json.results[0].id,
                     movieInfo: json.results[0],
@@ -46,9 +45,11 @@ class Movie extends Component {
                 this.setState({
                     movieId: json.results[mainMovieIdx].id,
                     movieInfo: json.results[mainMovieIdx],
-                    otherMovies: json.results
+                    otherMovies: json.results.filter((m) => m.id != mainMovieId)
                 });
             }
+
+            console.log("otherMovies", this.state.movieId);
 
             //fetching trailer
             const videoUrl = `https://api.themoviedb.org/3/movie/${this.state.movieId}/videos?${keyUrl}`;
